@@ -1,0 +1,96 @@
+{
+  "profile": {
+    "name": "John Doe",
+    "title": "Full Stack Developer",
+    "description": "Passionate developer with 5+ years of experience in building web applications and solving complex problems.",
+    "location": "San Francisco, CA",
+    "avatar": "/static/img/profile.jpg",
+    "social": {
+      "github": "https://github.com/johndoe",
+      "linkedin": "https://linkedin.com/in/johndoe",
+      "twitter": "https://twitter.com/johndoe"
+    }
+  },
+  "skills": [
+    {
+      "name": "Go",
+      "category": "Backend",
+      "level": 5,
+      "icon": "go"
+    },
+    {
+      "name": "React",
+      "category": "Frontend",
+      "level": 4,
+      "icon": "react"
+    },
+    {
+      "name": "Docker",
+      "category": "DevOps",
+      "level": 4,
+      "icon": "docker"
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Database",
+      "level": 4,
+      "icon": "postgresql"
+    }
+  ],
+  "projects": [
+    {
+      "title": "E-Commerce Platform",
+      "description": "A full-stack e-commerce solution built with Go and React. Features include user authentication, product management, and payment integration.",
+      "image": "/static/img/projects/ecommerce.jpg",
+      "technologies": ["Go", "React", "PostgreSQL", "Docker"],
+      "liveUrl": "https://project.com",
+      "githubUrl": "https://github.com/username/project"
+    },
+    {
+      "title": "Task Management System",
+      "description": "A Kanban-style task management application with real-time updates and team collaboration features.",
+      "image": "/static/img/projects/taskmanager.jpg",
+      "technologies": ["React", "Node.js", "MongoDB", "WebSocket"],
+      "liveUrl": "https://tasks.project.com",
+      "githubUrl": "https://github.com/username/tasks"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Tech Corp",
+      "title": "Senior Developer",
+      "period": "2020 - Present",
+      "description": "Leading backend development team and architecting scalable solutions.",
+      "achievements": [
+        "Improved system performance by 40%",
+        "Implemented microservices architecture",
+        "Led team of 5 developers",
+        "Reduced deployment time by 60%"
+      ]
+    },
+    {
+      "company": "StartUp Inc",
+      "title": "Full Stack Developer",
+      "period": "2018 - 2020",
+      "description": "Developed and maintained various web applications using modern technologies.",
+      "achievements": [
+        "Built company's main product from scratch",
+        "Implemented CI/CD pipeline",
+        "Reduced page load time by 50%"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Technology",
+      "degree": "BS in Computer Science",
+      "period": "2014 - 2018",
+      "gpa": "3.8"
+    }
+  ],
+  "contact": {
+    "email": "john@example.com",
+    "phone": "+1 234 567 8900",
+    "location": "San Francisco, CA"
+  }
+}
