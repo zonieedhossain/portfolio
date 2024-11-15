@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD. ZONIEED HOSSAIN | Portfolio</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<!-- Navigation Bar -->
+<div class="navbar">
+    <div class="nav-container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="/static/image/profile.jpg" alt="MD. ZONIEED HOSSAIN" onerror="this.src='https://via.placeholder.com/150'">
+            </div>
+            <div class="profile-info">
+                <h1>MD. ZONIEED HOSSAIN</h1>
+                <p>Senior Software Engineer</p>
+                <div class="profile-location">
+                    <span class="material-icons">location_on</span>
+                    Dhaka, Bangladesh
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <button class="nav-item active" data-path="/api/summary" data-title="Summary">
+                <span class="material-icons">person</span>
+                Summary
+            </button>
+            <button class="nav-item" data-path="/api/experience" data-title="Experience">
+                <span class="material-icons">work</span>
+                Experience
+            </button>
+            <button class="nav-item" data-path="/api/projects" data-title="Projects">
+                <span class="material-icons">folder</span>
+                Projects
+            </button>
+            <button class="nav-item" data-path="/api/skills" data-title="Skills">
+                <span class="material-icons">build</span>
+                Skills
+            </button>
+            <button class="nav-item" data-path="/api/education" data-title="Education">
+                <span class="material-icons">school</span>
+                Education
+            </button>
+            <button class="nav-item" data-path="/api/publications" data-title="Publications">
+                <span class="material-icons">description</span>
+                Publications
+            </button>
+        </nav>
+
+        <!-- Bottom Actions -->
+        <div class="nav-bottom">
+            <div class="social-links">
+                <a href="https://github.com/zonieedhossain" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/zonieedhossain" class="social-link" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="skype:live:.cid.e726be2ece974cc" class="social-link" target="_blank">
+                    <i class="fab fa-skype"></i>
+                </a>
+            </div>
+            <a href="mailto:zonieed.uap@gmail.com" class="hire-btn">
+                <span class="material-icons">rocket_launch</span>
+                Hire Now
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<main class="main-content">
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="window-controls">
+                <button class="window-button close"></button>
+                <button class="window-button minimize"></button>
+                <button class="window-button maximize"></button>
+            </div>
+            <div class="terminal-title">~/portfolio</div>
+        </div>
+
+        <div class="terminal-content">
+            <div class="request-bar">
+                <div class="method">GET</div>
+                <div class="path" id="current-path">/api/summary</div>
+                <button class="send-btn">
+                    <span>Send</span>
+                    <span class="arrow">➤</span>
+                </button>
+            </div>
+
+            <div class="response-section">
+                <div class="response-header">
+                    <div class="status">
+                        <span class="status-dot"></span>
+                        <span id="status-text">Status: 200</span>
+                    </div>
+                    <div class="response-time" id="response-time">Time: 0.00 ms</div>
+                </div>
+
+                <div class="response-content" id="content">
+                    <!-- Content will be loaded here -->
+                    <div class="summary-section">
+                    </div>
+                    <div class="experience-section">
+                        <!-- Experience items will be added here -->
+                    </div>
+                    <div class="projects-section">
+                        <!-- Project items will be added here -->
+                    </div>
+                    <div class="skills-section">
+                        <!-- Skills categories will be added here -->
+                    </div>
+                    <div class="education-section">
+                        <!-- Education and certifications will be added here -->
+                    </div>
+                    <div class="publications-section">
+                        <!-- Publication items will be added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>

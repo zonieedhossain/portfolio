@@ -1,3 +1,3 @@
-module github.com/CyanShark007/portfolio
+module portfolio
 
 go 1.22.2
