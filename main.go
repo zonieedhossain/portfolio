@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"html/template"
 	"log"
 	"math/rand"
@@ -187,32 +188,40 @@ var skills = []struct {
 	Items    []string `json:"items"`
 }{
 	{
-		Category: "Programming Languages & Frameworks",
-		Items:    []string{"Golang (Go)", "Python", "Gin", "Fiber", "Echo", "Django", "FastAPI"},
+		Category: "Programming Languages",
+		Items:    []string{"Golang (Go)", "Python"},
+	},
+	{
+		Category: "Frameworks & Libraries",
+		Items:    []string{"Gin", "Fiber", "Echo", "Django", "GORM"},
 	},
 	{
 		Category: "Databases & Caching",
-		Items:    []string{"PostgreSQL", "MongoDB", "MySQL", "Redis", "ArangoDB"},
+		Items:    []string{"PostgreSQL", "MongoDB", "MySQL", "ArangoDB", "Redis"},
 	},
 	{
-		Category: "Message Queues & Streaming",
+		Category: "Messaging & Streaming",
 		Items:    []string{"Apache Kafka", "NATS", "RabbitMQ"},
 	},
 	{
-		Category: "APIs & Communication Protocols",
-		Items:    []string{"gRPC", "REST", "GraphQL", "WebSockets"},
+		Category: "APIs & Communication",
+		Items:    []string{"gRPC", "REST", "GraphQL"},
 	},
 	{
-		Category: "DevOps & Cloud Infrastructure",
+		Category: "Cloud & DevOps",
 		Items:    []string{"Docker", "Kubernetes", "AWS", "GCP", "Terraform", "Linux"},
 	},
 	{
-		Category: "Architecture & Design Patterns",
-		Items:    []string{"Microservices", "Event-Driven Architecture", "Domain-Driven Design (DDD)", "CQRS"},
+		Category: "Architecture & System Design",
+		Items: []string{
+			"Microservices Architecture",
+			"Event-Driven Architecture",
+			"Domain-Driven Design (DDD)",
+		},
 	},
 	{
-		Category: "Tools & Monitoring",
-		Items:    []string{"Git", "Prometheus", "Grafana", "GORM", "SQLx"},
+		Category: "Observability & Tooling",
+		Items:    []string{"Git", "Prometheus", "Grafana"},
 	},
 }
 
@@ -314,8 +323,20 @@ func handleResponse(w http.ResponseWriter, data interface{}) {
 func handler(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path
 
+	// CGI Path Correction: Strip binary name from path if present
+	// (e.g., /portfolio.cgi/api/summary -> /api/summary)
+	prefixes := []string{"/portfolio.cgi", "/index.cgi", "/main.cgi"}
+	for _, pref := range prefixes {
+		if strings.HasPrefix(path, pref) {
+			path = strings.TrimPrefix(path, pref)
+			if path == "" {
+				path = "/"
+			}
+			break
+		}
+	}
+
 	// Handle static files
-	// Using HasPrefix is cleaner than manual slicing
 	if strings.HasPrefix(path, "/static/") {
 		file := filepath.Join(".", path)
 		http.ServeFile(w, r, file)
@@ -338,6 +359,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		handleResponse(w, publications)
 	case "/api/system-stats":
 		handleSystemStats(w, r)
+	case "/debug":
+		fmt.Fprintf(w, "CGI OK - If you see this, the binary is executing correctly.")
 	case "/":
 		mainHandler(w, r)
 	default:
@@ -357,6 +380,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	// Ultra-minimal startup test for CGI
+	if os.Getenv("GATEWAY_INTERFACE") != "" {
+		fmt.Printf("X-CGI-Debug: Starting Up\r\n")
+	}
+
 	if len(os.Args) > 1 && os.Args[1] == "serve" {
 		// Development mode
 		// We can still use http.Handle for static in dev mode for efficiency/standard lib behavior
@@ -377,6 +405,27 @@ func main() {
 	}
 
 	// CGI mode for production
+	// Hostinger/Apache sometimes needs the Content-Type header immediately
+	// if a panic occurs.
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Printf("Content-Type: text/plain\r\n\r\n")
+			fmt.Printf("CGI PANIC RECOVERY: %v\n", r)
+		}
+	}()
+
+	if os.Getenv("GATEWAY_INTERFACE") != "" {
+		if exe, err := os.Executable(); err == nil {
+			dir := filepath.Dir(exe)
+			os.Chdir(dir)
+
+			// If we are in cgi-bin, the templates are one level up
+			if filepath.Base(dir) == "cgi-bin" {
+				os.Chdir("..")
+			}
+		}
+	}
+
 	err := cgi.Serve(http.HandlerFunc(handler))
 
 	if err != nil {
@@ -385,6 +434,10 @@ func main() {
 }
 
 func mainHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("templates/index.html"))
+	tmpl, err := template.ParseFiles("templates/index.html")
+	if err != nil {
+		http.Error(w, "Template Error: "+err.Error()+"\nEnsure 'templates/index.html' exists relative to the binary.", http.StatusInternalServerError)
+		return
+	}
 	tmpl.Execute(w, nil)
 }

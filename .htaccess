@@ -1,0 +1,21 @@
+# Optimized PHP routing for Hostinger
+Options -Indexes
+RewriteEngine On
+RewriteBase /
+
+# 1. Skip rewrites for actual files (like images, css, js)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# 2. Specifically ensure 'static' folder is accessible
+RewriteRule ^static/(.*)$ static/$1 [L]
+
+# 3. API routing to api.php
+RewriteRule ^api/(.*)$ api.php [L,QSA]
+
+# 4. Everything else to index.php (Home page)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
+
+DirectoryIndex index.php
