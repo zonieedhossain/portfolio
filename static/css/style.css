@@ -796,6 +796,25 @@ p {
   font-size: 0.9rem;
 }
 
+.beta-badge {
+  background: rgba(234, 179, 8, 0.1);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
 /* System Info Panel - Modern Footer Style */
 /* System Info Panel - Slim Status Bar (approx 5% height) */
 footer.system-info-panel {
@@ -1861,6 +1880,49 @@ footer.system-info-panel {
     height: 70px;
     font-size: 2.2rem;
   }
+}
+
+.terminal-title {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.beta-badge {
+  background: rgba(234, 179, 8, 0.1);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  animation: pulse 2s infinite;
+  margin-left: auto;
+  margin-right: 1.5rem;
+}
+
+.beta-watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 6rem;
+  font-weight: 900;
+  color: rgba(129, 140, 248, 0.03); /* Extremely subtle for centering */
+  pointer-events: none;
+  z-index: 9999;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  white-space: nowrap;
+  user-select: none;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
 }
 
 /* End of file */

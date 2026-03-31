@@ -183,8 +183,8 @@ async function fetchContent(path) {
         // The user's code previously had some PHP path logic? We should stick to the direct path since it works with Go
         // const apiPath = `/api/${path.split('/').pop()}`; 
         // Go server handles /api/* directly.
-        const apiPath = path;
-
+        // Use relative path to ensure it works on any port/host (e.g., localhost:8081)
+        const apiPath = path.startsWith('/') ? path.substring(1) : path;
         console.log(`[Fetch] Requesting: ${apiPath}`);
         const response = await fetch(apiPath);
 
