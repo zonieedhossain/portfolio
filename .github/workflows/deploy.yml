@@ -18,6 +18,9 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          # Recommended for Hostinger shared servers
           local-dir: ./
           server-dir: public_html/
           exclude: |
