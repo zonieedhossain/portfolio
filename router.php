@@ -1,6 +1,6 @@
 <?php
 /**
- * PHP Router for Local Development / WSL Preview
+ * PHP Router for Local Development / WSL Development
  * Mimics Hostinger's .htaccess behavior
  */
 
