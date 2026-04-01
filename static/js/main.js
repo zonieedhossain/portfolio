@@ -370,6 +370,29 @@ function formatContent(data, path) {
                 </div>
             `).join('');
 
+        case '/api/logs':
+            return data.map((log, index) => `
+                <div class="log-card modern-card" style="animation-delay: ${index * 0.1}s">
+                    <div class="open-header">
+                        <div class="header-main">
+                            <h3>${log.title}</h3>
+                        </div>
+                        <div class="project-links">
+                            <a href="${log.url}" target="_blank" class="project-link" title="Read on ${log.platform}">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="open-body">
+                        <p class="description">${log.summary}</p>
+                        <div class="log-meta">
+                            <span class="log-platform">${log.platform}</span>
+                            <span class="log-date">${log.date}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
         default:
             return '<p class="error">Section not found</p>';
     }
