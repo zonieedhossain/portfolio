@@ -6,105 +6,134 @@ header('Access-Control-Allow-Headers: Content-Type');
 
 // Data structures synced from resume.md
 $summary = [
-    "👋 I’m Zonieed — a Senior Backend Engineer & Architect dedicated to solving complex data consistency and microservice orchestration challenges.",
-    "Driven by an SRE mindset, I engineer systems where reliability isn't just a metric—it's the baseline. My focus is on absolute state correctness, high availability, and deterministic performance under high-concurrency (50k+ users).",
-    "For 7+ years, I have navigated the landscapes of ERP, Logistics, and EdTech, transforming messy operational bottlenecks into clean, event-driven distributed ecosystems.",
-    "I believe that true engineering seniority starts with a 'Reliability-First' mindset. I spend my time mentoring developers, reviewing architectures for distributed pitfalls, and designing for the long-term longevity of the product.",
-    "📍 Based in Dhaka, Bangladesh — A global tech explorer bridging the gap between machines and mountains."
+    "👋 I’m Zonieed — a Senior Backend Engineer (Go) & Distributed Systems Lead based in Dhaka, Bangladesh.",
+    "Senior Backend Engineer with 7+ years building Go-based distributed systems and event-driven microservices across ERP, EdTech and logistics domains. Specialized in consistency-critical systems: inventory correctness, idempotent event processing and multi-tenant isolation.",
+    "Proven in designing high-concurrency systems, leading microservices migrations and delivering production-grade backend infrastructure.",
+    "Contributed to backend infrastructure at Shikho (Forbes Asia 100, 2.5M+ users) and delivered mission-critical EDI integrations for JL Audio, subsequently acquired by Garmin (NYSE: GRMN).",
+    "📍 Open to Local, Remote & Relocation."
 ];
 
 $experience = [
     [
         "company" => "Gononet Online Solutions Limited",
-        "title" => "Senior Software Engineer | Team Lead",
-        "period" => "August 2024 - Present",
-        "description" => "Leading the architectural evolution of enterprise ERP and large-scale grocery logistics platforms.",
+        "url" => "https://gononet.net",
+        "title" => "Senior Software Engineer (Backend) & Team Lead",
+        "period" => "Aug 2024 -- Present",
+        "description" => "RetailerBook --- multi-tenant ERP for retail inventory and procurement • GorillaMove --- instant grocery delivery platform, 20K+ customers, Dhaka",
         "achievements" => [
-            "Architected a 9-microservice ERP ecosystem (GonoERP) using Golang and gRPC, implementing domain isolation for Inventory, Sales and Identity.",
-            "Engineered a high-precision Stock Engine using bin-level warehouse logic, ensuring atomic inventory consistency across multi-tenant clients.",
-            "Implemented a fault-tolerant event system using Kafka and the Inbox pattern, solving message duplication and ensuring exactly-once delivery.",
-            "Established system observability by integrating Grafana and Loki, reducing MTTR through structured logging and trace-based debugging.",
-            "Designed multi-tenant Auth models using RBAC and ABAC interceptors, securing gRPC communication across the platform."
+            "Eliminated cross-service data drift in a multi-tenant retail system by decomposing a monolithic ERP into isolated microservices across inventory, sales, auth and purchase.",
+            "Prevented overselling under concurrent order processing by engineering a high-concurrency inventory engine using Go and PostgreSQL (bun.Tx) with SELECT FOR UPDATE row-level locking.",
+            "Eliminated per-handler auth boilerplate across all service contracts by architecting a reflection-based gRPC interceptor enforcing tenant-scoped ABAC attribute validation.",
+            "Guaranteed exactly-once delivery of stock and order updates by implementing a Kafka Inbox pattern, wrapping consumer ingestion logic within atomic database transactions.",
+            "Improved real-time on-hand stock calculations across bin locations by implementing CTE-based dynamic stock valuation queries in PostgreSQL.",
+            "Solved nearest-store discovery for GorillaMove by implementing Meilisearch geo-indexing with a secondary verification pass using map APIs.",
+            "Improved system debuggability under live load by establishing Grafana and Loki structured logging with trace correlation across distributed services.",
+            "Standardized gRPC-first service templates and Clean Architecture patterns across backend teams, reducing architectural drift.",
+            "Led and mentored a backend team of 4 engineers, conducting design reviews, code reviews and technical mentoring."
         ],
-        "skills" => ["Golang", "gRPC", "Kafka", "PostgreSQL", "Grafana", "Loki"]
+        "skills" => ["Go (Golang)", "PostgreSQL", "Kafka", "gRPC", "Meilisearch", "Meilisearch Geo-indexing", "Grafana", "Loki"]
     ],
     [
-        "company" => "Shikho Technologies",
-        "title" => "SDE-II Golang Engineer | Core Infrastructure",
-        "period" => "December 2021 - July 2024",
-        "description" => "Architected mission-critical backend systems for Bangladesh's leading EdTech platform.",
+        "company" => "Shikho Technologies Limited",
+        "url" => "https://shikho.com",
+        "title" => "SDE-II Golang Engineer",
+        "period" => "Dec 2021 -- Jul 2024",
+        "description" => "Bangladesh's leading EdTech --- Forbes Asia 100 (2022) • VC-backed ($8.5M) • Platform grew from 500K to 2.5M+ registered users during tenure. Supported Bohubrihi (acquired by Shikho).",
         "achievements" => [
-            "Optimized Live-Exam concurrency orchestration handling 50,000+ simultaneous participants using NATS Jetstream for low-latency state sync.",
-            "Migrated the Bohubrihi (Professional Learning) monolith to a Golang microservices suite, increasing uptime from 95% to 99.9%.",
-            "Developed asynchronous data pipelines using Kafka and MongoDB to synchronize engagement data across distributed analytics engines.",
-            "Standardized K8s deployments by creating modular Helm charts and GitLab CI/CD pipelines for 15+ backend services."
+            "Decoupled real-time student submissions from intensive reporting pipelines by scaling live-exam orchestration using NATS JetStream during national exam periods.",
+            "Prevented exam collusion at national scale by designing a deterministic exam randomizer service using session and exam IDs as entropy seeds.",
+            "Eliminated content duplication across academic programs by architecting a many-to-many lesson-mapping layer, reducing data storage overhead.",
+            "Ensured non-blocking user experiences during heavy processing tasks by implementing RabbitMQ-based asynchronous workers for video ingestion and processing.",
+            "Migrated core backend components of the Bohubrihi WordPress monolith (100K+ users) into isolated Go microservices using a Python-based EAV normalization pipeline.",
+            "Ensured reliable analytics ingestion under high traffic by designing event-driven data pipelines for learner activity and reporting systems using NATS JetStream and MongoDB.",
+            "Reduced query latency and database load under high-traffic conditions by optimizing PostgreSQL and MongoDB through index tuning and schema improvements."
         ],
-        "skills" => ["Golang", "NATS Jetstream", "Kafka", "MongoDB", "Helm", "Kubernetes"]
+        "skills" => ["Go (Golang)", "NATS JetStream", "RabbitMQ", "PostgreSQL", "MongoDB", "Python"]
     ],
     [
-        "company" => "Code Concept Consulting (JL Audio / Garmin)",
-        "title" => "Software Consultant (International)",
-        "period" => "February 2022 - May 2024",
-        "description" => "Engineered robust enterprise integration middleware for global electronics and hardware brands.",
+        "company" => "Code Concept Consulting",
+        "url" => "https://codeconceptconsulting.com",
+        "title" => "Software Consultant (Backend)",
+        "period" => "Feb 2022 -- May 2024",
+        "description" => "Client: JL Audio --- US-based premium audio manufacturer (600+ employees), subsequently acquired by Garmin (NYSE: GRMN) in September 2023.",
         "achievements" => [
-            "Developed Shopify-Dynamics 365 middleware in Go/Python, managing webhooks, delta synchronization and automated retry mechanisms.",
-            "Implemented IaC modules using Terraform for AWS VPC, RDS and SFTP-bridge networking.",
-            "Optimized performance for batch data handling across global WMS systems."
+            "Ensured cross-system data consistency for a US client subsequently acquired by Garmin by designing fault-tolerant Shopify–Microsoft Dynamics 365 synchronization middleware in Go and Python.",
+            "Eliminated race conditions and duplicate updates across synchronization pipelines by implementing retry-safe, idempotent integration workflows with transactional guards.",
+            "Enabled reliable global fulfillment data exchange by engineering XML-based SFTP pipelines in ASN 856 format for 3PL partners including Expeditors.",
+            "Eliminated hard-coded EDI mapping brittleness by refactoring the BRP part-number mapping system into a dynamic S3-based service.",
+            "Enabled accurate time-bound financial processing for global retail operations by engineering a fiscal calendar module synchronizing non-standard trade periods from Oracle ERP data."
         ],
-        "skills" => ["Golang", "Python", "Terraform", "AWS", "Dynamics 365", "Distributed Integration"]
+        "skills" => ["Go (Golang)", "Python", "Shopify API", "Microsoft Dynamics 365", "SFTP", "ASN 856 EDI", "S3"]
     ],
     [
         "company" => "Ghuri Express Limited",
-        "title" => "Senior Software Engineer | Team Lead",
-        "period" => "June 2021 - December 2021",
-        "description" => "Architected logistics and quick-commerce fulfillment platform.",
+        "title" => "Senior Backend Engineer & Team Lead",
+        "period" => "Feb 2021 -- Dec 2021",
+        "description" => "Logistics and quick-commerce delivery platform.",
         "achievements" => [
-            "Architected a zone-aware dispatching engine for logistics, utilizing custom geo-indexing and real-time rider tracking with Redis Pub/Sub.",
-            "Led the end-to-end delivery of a 5-microservice logistics suite, managing the full lifecycle from merchant onboarding to rider operations."
+            "Enabled real-time parcel visibility by leading development of a logistics platform utilizing Redis for low-latency rider location tracking and PostgreSQL for parcel lifecycle audits.",
+            "Improved deployment reliability and release consistency by standardizing GitLab CI/CD pipelines, Helm charts and Kubernetes deployments across services."
         ],
-        "skills" => ["Golang", "Redis Clusters", "Geo-indexing", "WebSockets", "Prometheus"]
+        "skills" => ["Go (Golang)", "Redis", "PostgreSQL", "GitLab CI/CD", "Helm", "Kubernetes"]
+    ],
+    [
+        "company" => "Sticker Driver (now Adeffi)",
+        "url" => "https://adeffi.com",
+        "title" => "Backend Engineer",
+        "period" => "Jun 2019 -- Feb 2021",
+        "description" => "Outdoor advertising and vehicle tracking platform.",
+        "achievements" => [
+            "Enabled accurate advertising impact reporting by building GPS telemetry pipelines using path-simplification logic and distance computation on 5-second telemetry intervals.",
+            "Eliminated database overload under high-frequency GPS ingestion by migrating hot-path state storage from PostgreSQL to Redis."
+        ],
+        "skills" => ["Go (Golang)", "PostgreSQL", "Redis", "GPS Telemetry", "Path Simplification"]
     ]
 ];
 
 $projects = [
     [
-        "title" => "GonoERP (RetailerBook)",
-        "description" => "Enterprise ERP platform for procurement, sales, inventory management and demand planning. Architecture focuses on high-precision stock engines and gRPC-driven domain isolation.",
-        "technologies" => ["Golang", "PostgreSQL", "gRPC", "Kafka", "Docker", "Kubernetes"]
+        "title" => "gocraft",
+        "url" => "https://github.com/zonieedhossain/gocraft",
+        "description" => "CLI tool to scaffold modular Go backend services with configurable framework selection, ORM setup (Bun/GORM/Sqlc), auth bootstrapping and Docker integration out of the box.",
+        "technologies" => ["Go (Golang)", "CLI", "Shell", "Docker"]
     ],
     [
-        "title" => "gocraft (Open Source)",
-        "description" => "Developed a modular CLI tool for scaffolding Go backend projects (Fiber/Echo/Gin) with standardized boilerplate, ORM setup (Bun/GORM/Sqlc) and Docker integration.",
-        "technologies" => ["Golang", "CLI", "Boilerplate", "Docker"]
+        "title" => "go-ott-api",
+        "url" => "https://github.com/zonieedhossain/go-ott-api",
+        "description" => "Modular Go backend for video platform workflows implementing JWT auth, rate limiting, PostgreSQL, Redis caching, Consul-based config management and Dockerized local development.",
+        "technologies" => ["Go (Golang)", "PostgreSQL", "Redis", "Consul", "JWT"]
     ],
     [
-        "title" => "Live-Exam Orchestrator",
-        "description" => "High-concurrency orchestration engine handling 50k+ users. Uses NATS Jetstream for ultra-low latency state transition and event synchronization.",
-        "technologies" => ["Golang", "NATS Jetstream", "Kafka", "Microservices"]
-    ],
-    [
-        "title" => "Shopify ↔ Dynamics 365 Middleware",
-        "description" => "Enterprise-grade integration engine for global hardware brands. Handles millions of sync cycles with strict transactional integrity and retry logic.",
-        "technologies" => ["Golang", "AWS", "Terraform", "Exactly-Once Processing"]
+        "title" => "Proto-Central",
+        "description" => "Centralized gRPC schema registry at Gononet, eliminating contract drift and reducing integration errors across backend service teams.",
+        "technologies" => ["Go (Golang)", "gRPC", "Protobuf", "Schema Registry"]
     ]
 ];
 
 $skills = [
     [
-        "category" => "Programming & Ops",
-        "items" => ["Golang (Go)", "Python", "Kubernetes", "Docker", "Helm", "Terraform", "CI/CD", "AWS", "GCP"]
+        "category" => "Languages",
+        "items" => ["Go (Golang)", "Python", "SQL"]
     ],
     [
-        "category" => "Distributed Systems",
-        "items" => ["Apache Kafka", "NATS Jetstream", "gRPC / Protobuf", "Domain-Driven Design (DDD)", "Event-Driven Architecture", "Exactly-Once Processing"]
+        "category" => "Backend & Architecture",
+        "items" => ["Microservices", "Distributed Systems", "Event-Driven Architecture", "Domain-Driven Design", "Clean Architecture"]
+    ],
+    [
+        "category" => "APIs & Messaging",
+        "items" => ["gRPC (Protobuf)", "REST", "Kafka (Inbox/Outbox)", "NATS JetStream", "RabbitMQ"]
     ],
     [
         "category" => "Databases & Observability",
-        "items" => ["PostgreSQL", "MongoDB", "Redis", "Grafana", "Loki", "Prometheus", "OpenTelemetry"]
+        "items" => ["PostgreSQL", "Redis", "MongoDB", "MySQL", "Prometheus", "Grafana", "Loki"]
     ],
     [
-        "category" => "Engineering Philosophy",
-        "items" => ["Correctness Over Cleverness", "SRE Mindset", "Idempotent API Design", "Legacy Monolith Migration"]
+        "category" => "Infrastructure",
+        "items" => ["AWS", "Docker", "Kubernetes", "CI/CD", "Linux", "GCP (familiar)", "Helm", "Terraform"]
+    ],
+    [
+        "category" => "Patterns & Security",
+        "items" => ["Idempotency", "RBAC", "ABAC", "Multi-Tenant Architecture", "Inbox/Outbox"]
     ]
 ];
 
@@ -144,14 +173,16 @@ $logs = [
 
 $education = [
     "education" => [
-        "degree" => "B.Sc. in Computer Science & Engineering",
+        "degree" => "B.Sc. in Computer Science and Engineering",
         "institution" => "University of Asia Pacific",
-        "period" => "2015 - 2018"
+        "period" => "2015 -- 2018"
     ],
     "certifications" => [
-        "ACM-ICPC Asia Dhaka Regional Contest (2016)"
+        "ACM-ICPC Asia Dhaka Regional (2016)",
+        "Bangladesh NCPC (2016)"
     ]
 ];
+
 
 // Helper to handle response
 function sendResponse($data) {
